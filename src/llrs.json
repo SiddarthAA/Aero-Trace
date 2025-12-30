@@ -1,0 +1,62 @@
+[
+  {
+    "id": "LLR01",
+    "name": "Validation of air data inputs",
+    "description": "The flight control computer shall perform range and consistency checks on airspeed and Mach number inputs at a rate of at least 50 Hz.",
+    "embedding_text": "Validation of air data inputs. The flight control computer shall perform range and consistency checks on airspeed and Mach number inputs at a rate of at least 50 Hz."
+  },
+  {
+    "id": "LLR02",
+    "name": "Control law reversion timing",
+    "description": "Upon detection of invalid air data, the flight control computer shall transition from normal law to alternate law within 100 milliseconds.",
+    "embedding_text": "Control law reversion timing. Upon detection of invalid air data, the flight control computer shall transition from normal law to alternate law within 100 milliseconds."
+  },
+  {
+    "id": "LLR03",
+    "name": "Inhibition of air-data-dependent functions",
+    "description": "When operating in alternate control law due to air data failure, airspeed-dependent flight envelope protections shall be inhibited.",
+    "embedding_text": "Inhibition of air-data-dependent functions. When operating in alternate control law due to air data failure, airspeed-dependent flight envelope protections shall be inhibited."
+  },
+  {
+    "id": "LLR04",
+    "name": "Primary flight display fault annunciation",
+    "description": "The system shall annunciate a flight control system fault on the primary flight display using standard caution or warning symbology.",
+    "embedding_text": "Primary flight display fault annunciation. The system shall annunciate a flight control system fault on the primary flight display using standard caution or warning symbology."
+  },
+  {
+    "id": "LLR05",
+    "name": "Air data sensor retry mechanism",
+    "description": "The system shall retry acquisition of air data sensor values up to three times before declaring the sensor invalid.",
+    "embedding_text": "Air data sensor retry mechanism. The system shall retry acquisition of air data sensor values up to three times before declaring the sensor invalid."
+  },
+  {
+    "id": "LLR06",
+    "name": "High-rate recording of raw air data parameters",
+    "description": "The system shall record raw air data parameters at a minimum rate of 200 Hz for engineering analysis.",
+    "embedding_text": "High-rate recording of raw air data parameters. The system shall record raw air data parameters at a minimum rate of 200 Hz for engineering analysis."
+  },
+  {
+    "id": "LLR07",
+    "name": "Adaptive sensor polling for power optimization",
+    "description": "The system shall dynamically adjust sensor polling rates during steady-state flight to reduce power consumption.",
+    "embedding_text": "Adaptive sensor polling for power optimization. The system shall dynamically adjust sensor polling rates during steady-state flight to reduce power consumption."
+  },
+  {
+    "id": "LLR08",
+    "name": "Detection of non-critical sensor degradation",
+    "description": "The system shall detect degraded performance of non-critical sensors and classify them as failed or degraded based on predefined thresholds.",
+    "embedding_text": "Detection of non-critical sensor degradation. The system shall detect degraded performance of non-critical sensors and classify them as failed or degraded based on predefined thresholds."
+  },
+  {
+    "id": "LLR09",
+    "name": "Functional isolation following partial sensor failure",
+    "description": "Upon detection of a degraded non-critical sensor, only the functions dependent on that sensor shall be disabled while maintaining overall flight control.",
+    "embedding_text": "Functional isolation following partial sensor failure. Upon detection of a degraded non-critical sensor, only the functions dependent on that sensor shall be disabled while maintaining overall flight control."
+  },
+  {
+    "id": "LLR10",
+    "name": "Monitoring of actuator command-response consistency",
+    "description": "The system shall monitor the difference between commanded and measured actuator positions to detect actuator faults.",
+    "embedding_text": "Monitoring of actuator command-response consistency. The system shall monitor the difference between commanded and measured actuator positions to detect actuator faults."
+  }
+]

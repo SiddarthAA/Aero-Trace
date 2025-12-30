@@ -1,0 +1,17 @@
+[project]
+name = "reqs"
+version = "0.1.0"
+description = "Requirements Traceability Analysis using LLMs and Embeddings"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "sentence-transformers>=5.2.0",
+    "faiss-cpu>=1.13.2",
+    "groq>=1.0.0",
+    "rich>=13.7.0",
+    "python-dotenv>=1.0.0",
+    "networkx>=3.2.1",
+    "matplotlib>=3.8.0",
+    "numpy>=1.26.0",
+    "pydantic>=2.5.0",
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "HLR01",
+    "name": "Safe flight control law reversion on air data failure",
+    "description": "The flight control system shall revert to a predefined degraded control law when invalid air data is detected during any phase of flight in order to maintain controllability.",
+    "embedding_text": "Safe flight control law reversion on air data failure. The flight control system shall revert to a predefined degraded control law when invalid air data is detected during any phase of flight in order to maintain controllability."
+  },
+  {
+    "id": "HLR02",
+    "name": "Pilot alerting for flight control system faults",
+    "description": "The flight control system shall provide timely and unambiguous alerts to the flight crew upon detection of flight control system faults that affect aircraft handling qualities.",
+    "embedding_text": "Pilot alerting for flight control system faults. The flight control system shall provide timely and unambiguous alerts to the flight crew upon detection of flight control system faults that affect aircraft handling qualities."
+  },
+  {
+    "id": "HLR03",
+    "name": "Nominal flight path stability during normal operation",
+    "description": "During normal operation, the flight control system shall maintain aircraft attitude and flight path stability within certified handling quality limits.",
+    "embedding_text": "Nominal flight path stability during normal operation. During normal operation, the flight control system shall maintain aircraft attitude and flight path stability within certified handling quality limits."
+  },
+  {
+    "id": "HLR04",
+    "name": "Maintenance data recording for fault investigation",
+    "description": "The system shall record operational and fault data required to support post-flight maintenance and fault investigation activities.",
+    "embedding_text": "Maintenance data recording for fault investigation. The system shall record operational and fault data required to support post-flight maintenance and fault investigation activities."
+  },
+  {
+    "id": "HLR05",
+    "name": "Continued safe operation under partial sensor failures",
+    "description": "The flight control system shall continue safe operation with reduced functionality following the failure of non-critical sensors.",
+    "embedding_text": "Continued safe operation under partial sensor failures. The flight control system shall continue safe operation with reduced functionality following the failure of non-critical sensors."
+  },
+  {
+    "id": "HLR06",
+    "name": "Detection of flight control actuator faults",
+    "description": "The flight control system shall detect and report flight control actuator faults within acceptable latency to prevent loss of control.",
+    "embedding_text": "Detection of flight control actuator faults. The flight control system shall detect and report flight control actuator faults within acceptable latency to prevent loss of control."
+  }
+]

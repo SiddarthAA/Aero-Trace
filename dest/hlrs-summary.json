@@ -1,0 +1,785 @@
+{
+  "metadata": {
+    "total_hlrs": 6,
+    "compliant": 3,
+    "weakly_covered": 2,
+    "non_compliant": 1
+  },
+  "results": [
+    {
+      "req_id": "HLR01",
+      "req_type": "HLR",
+      "text": "Safe flight control law reversion on air data failure. The flight control system shall revert to a predefined degraded control law when invalid air data is detected during any phase of flight in order to maintain controllability.",
+      "classification": "COMPLIANT",
+      "confidence_score": 0.854,
+      "reasoning": {
+        "summary": "The HLR is COMPLIANT due to the presence of 3 strong supporters.",
+        "key_findings": [
+          "LLR 1 is a strong supporter with a weight of 0.854",
+          "LLR 2 is a strong supporter with a weight of 1.000",
+          "LLR 3 is a strong supporter with a weight of 0.967"
+        ],
+        "gaps_identified": []
+      },
+      "linked_llrs": [
+        {
+          "llr_id": "LLR02",
+          "llr_text": "Control law reversion timing",
+          "similarity_score": 0.754,
+          "weight": 0.854,
+          "relationship": "implements",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": false
+          }
+        },
+        {
+          "llr_id": "LLR03",
+          "llr_text": "Inhibition of air-data-dependent functions",
+          "similarity_score": 0.699,
+          "weight": 1.0,
+          "relationship": "implements",
+          "reasoning_results": {
+            "is_required": true,
+            "prevents_violation": true,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": false
+          }
+        },
+        {
+          "llr_id": "LLR01",
+          "llr_text": "Validation of air data inputs",
+          "similarity_score": 0.567,
+          "weight": 0.967,
+          "relationship": "implements",
+          "reasoning_results": {
+            "is_required": true,
+            "prevents_violation": true,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": false
+          }
+        },
+        {
+          "llr_id": "LLR05",
+          "llr_text": "Air data sensor retry mechanism",
+          "similarity_score": 0.563,
+          "weight": 0.463,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR09",
+          "llr_text": "Functional isolation following partial sensor failure",
+          "similarity_score": 0.5,
+          "weight": 0.4,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR04",
+          "llr_text": "Primary flight display fault annunciation",
+          "similarity_score": 0.452,
+          "weight": 0.252,
+          "relationship": "weak_extension",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": false,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR08",
+          "llr_text": "Detection of non-critical sensor degradation",
+          "similarity_score": 0.382,
+          "weight": 0.282,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR07",
+          "llr_text": "Adaptive sensor polling for power optimization",
+          "similarity_score": 0.375,
+          "weight": 0.175,
+          "relationship": "weak_extension",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": false,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR06",
+          "llr_text": "High-rate recording of raw air data parameters",
+          "similarity_score": 0.359,
+          "weight": 0.159,
+          "relationship": "weak_extension",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": false,
+            "extends_beyond_intent": true
+          }
+        }
+      ],
+      "metrics": {
+        "total_candidates": 9,
+        "strong_supporters": 3,
+        "medium_supporters": 0,
+        "weak_supporters": 2,
+        "required_llrs": 3
+      },
+      "risk_level": "LOW"
+    },
+    {
+      "req_id": "HLR02",
+      "req_type": "HLR",
+      "text": "Pilot alerting for flight control system faults. The flight control system shall provide timely and unambiguous alerts to the flight crew upon detection of flight control system faults that affect aircraft handling qualities.",
+      "classification": "COMPLIANT",
+      "confidence_score": 0.8,
+      "reasoning": {
+        "summary": "HLR is COMPLIANT due to 1 strong supporter and 2 medium supporters.",
+        "key_findings": [
+          "1 strong supporter",
+          "2 medium supporters"
+        ],
+        "gaps_identified": []
+      },
+      "linked_llrs": [
+        {
+          "llr_id": "LLR04",
+          "llr_text": "Primary flight display fault annunciation",
+          "similarity_score": 0.696,
+          "weight": 0.796,
+          "relationship": "supports",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": false
+          }
+        },
+        {
+          "llr_id": "LLR10",
+          "llr_text": "Monitoring of actuator command-response consistency",
+          "similarity_score": 0.51,
+          "weight": 0.61,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": false
+          }
+        },
+        {
+          "llr_id": "LLR02",
+          "llr_text": "Control law reversion timing",
+          "similarity_score": 0.488,
+          "weight": 0.388,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR09",
+          "llr_text": "Functional isolation following partial sensor failure",
+          "similarity_score": 0.453,
+          "weight": 0.353,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR01",
+          "llr_text": "Validation of air data inputs",
+          "similarity_score": 0.443,
+          "weight": 0.543,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": false
+          }
+        },
+        {
+          "llr_id": "LLR07",
+          "llr_text": "Adaptive sensor polling for power optimization",
+          "similarity_score": 0.42,
+          "weight": 0.22,
+          "relationship": "weak_extension",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": false,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR03",
+          "llr_text": "Inhibition of air-data-dependent functions",
+          "similarity_score": 0.401,
+          "weight": 0.301,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR08",
+          "llr_text": "Detection of non-critical sensor degradation",
+          "similarity_score": 0.36,
+          "weight": 0.16,
+          "relationship": "weak_extension",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": false,
+            "extends_beyond_intent": true
+          }
+        }
+      ],
+      "metrics": {
+        "total_candidates": 8,
+        "strong_supporters": 1,
+        "medium_supporters": 2,
+        "weak_supporters": 2,
+        "required_llrs": 0
+      },
+      "risk_level": "LOW"
+    },
+    {
+      "req_id": "HLR03",
+      "req_type": "HLR",
+      "text": "Nominal flight path stability during normal operation. During normal operation, the flight control system shall maintain aircraft attitude and flight path stability within certified handling quality limits.",
+      "classification": "WEAKLY_COVERED",
+      "confidence_score": 0.5,
+      "reasoning": {
+        "summary": "The HLR has some coverage but is incomplete or missing critical aspects.",
+        "key_findings": [
+          "1 strong supporter is needed for COMPLIANT classification"
+        ],
+        "gaps_identified": [
+          "LLR 1 is the only medium supporter, but no strong supporters are present"
+        ]
+      },
+      "linked_llrs": [
+        {
+          "llr_id": "LLR01",
+          "llr_text": "Validation of air data inputs",
+          "similarity_score": 0.488,
+          "weight": 0.588,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": false
+          }
+        },
+        {
+          "llr_id": "LLR03",
+          "llr_text": "Inhibition of air-data-dependent functions",
+          "similarity_score": 0.472,
+          "weight": 0.372,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR04",
+          "llr_text": "Primary flight display fault annunciation",
+          "similarity_score": 0.411,
+          "weight": 0.311,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR02",
+          "llr_text": "Control law reversion timing",
+          "similarity_score": 0.411,
+          "weight": 0.311,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR10",
+          "llr_text": "Monitoring of actuator command-response consistency",
+          "similarity_score": 0.41,
+          "weight": 0.31,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR09",
+          "llr_text": "Functional isolation following partial sensor failure",
+          "similarity_score": 0.394,
+          "weight": 0.294,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        }
+      ],
+      "metrics": {
+        "total_candidates": 6,
+        "strong_supporters": 0,
+        "medium_supporters": 1,
+        "weak_supporters": 1,
+        "required_llrs": 0
+      },
+      "risk_level": "MEDIUM"
+    },
+    {
+      "req_id": "HLR04",
+      "req_type": "HLR",
+      "text": "Maintenance data recording for fault investigation. The system shall record operational and fault data required to support post-flight maintenance and fault investigation activities.",
+      "classification": "NON_COMPLIANT",
+      "confidence_score": 0.0,
+      "reasoning": {
+        "summary": "No strong supporters and no medium supporters.",
+        "key_findings": [],
+        "gaps_identified": []
+      },
+      "linked_llrs": [
+        {
+          "llr_id": "LLR10",
+          "llr_text": "Monitoring of actuator command-response consistency",
+          "similarity_score": 0.437,
+          "weight": 0.537,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": false
+          }
+        },
+        {
+          "llr_id": "LLR06",
+          "llr_text": "High-rate recording of raw air data parameters",
+          "similarity_score": 0.428,
+          "weight": 0.228,
+          "relationship": "weak_extension",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": false,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR08",
+          "llr_text": "Detection of non-critical sensor degradation",
+          "similarity_score": 0.409,
+          "weight": 0.209,
+          "relationship": "weak_extension",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": false,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR04",
+          "llr_text": "Primary flight display fault annunciation",
+          "similarity_score": 0.403,
+          "weight": 0.203,
+          "relationship": "weak_extension",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": false,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR01",
+          "llr_text": "Validation of air data inputs",
+          "similarity_score": 0.394,
+          "weight": 0.294,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR05",
+          "llr_text": "Air data sensor retry mechanism",
+          "similarity_score": 0.378,
+          "weight": 0.278,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR09",
+          "llr_text": "Functional isolation following partial sensor failure",
+          "similarity_score": 0.364,
+          "weight": 0.264,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR02",
+          "llr_text": "Control law reversion timing",
+          "similarity_score": 0.354,
+          "weight": 0.254,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        }
+      ],
+      "metrics": {
+        "total_candidates": 8,
+        "strong_supporters": 0,
+        "medium_supporters": 1,
+        "weak_supporters": 0,
+        "required_llrs": 0
+      },
+      "risk_level": "HIGH"
+    },
+    {
+      "req_id": "HLR05",
+      "req_type": "HLR",
+      "text": "Continued safe operation under partial sensor failures. The flight control system shall continue safe operation with reduced functionality following the failure of non-critical sensors.",
+      "classification": "COMPLIANT",
+      "confidence_score": 0.9,
+      "reasoning": {
+        "summary": "The HLR is COMPLIANT due to the presence of 3 strong supporters and all expected aspects being covered.",
+        "key_findings": [
+          "LLR 4 is a required LLR that prevents violation and constrains unsafe behavior.",
+          "LLR 1, LLR 2, and LLR 8 are strong supporters that constrain unsafe behavior."
+        ],
+        "gaps_identified": []
+      },
+      "linked_llrs": [
+        {
+          "llr_id": "LLR09",
+          "llr_text": "Functional isolation following partial sensor failure",
+          "similarity_score": 0.787,
+          "weight": 0.887,
+          "relationship": "implements",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": false
+          }
+        },
+        {
+          "llr_id": "LLR03",
+          "llr_text": "Inhibition of air-data-dependent functions",
+          "similarity_score": 0.512,
+          "weight": 0.762,
+          "relationship": "supports",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": true,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": false
+          }
+        },
+        {
+          "llr_id": "LLR05",
+          "llr_text": "Air data sensor retry mechanism",
+          "similarity_score": 0.506,
+          "weight": 0.406,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR08",
+          "llr_text": "Detection of non-critical sensor degradation",
+          "similarity_score": 0.504,
+          "weight": 0.904,
+          "relationship": "implements",
+          "reasoning_results": {
+            "is_required": true,
+            "prevents_violation": true,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": false
+          }
+        },
+        {
+          "llr_id": "LLR04",
+          "llr_text": "Primary flight display fault annunciation",
+          "similarity_score": 0.496,
+          "weight": 0.396,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR02",
+          "llr_text": "Control law reversion timing",
+          "similarity_score": 0.492,
+          "weight": 0.392,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR07",
+          "llr_text": "Adaptive sensor polling for power optimization",
+          "similarity_score": 0.476,
+          "weight": 0.276,
+          "relationship": "weak_extension",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": false,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR01",
+          "llr_text": "Validation of air data inputs",
+          "similarity_score": 0.472,
+          "weight": 0.572,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": false
+          }
+        }
+      ],
+      "metrics": {
+        "total_candidates": 8,
+        "strong_supporters": 3,
+        "medium_supporters": 1,
+        "weak_supporters": 3,
+        "required_llrs": 1
+      },
+      "risk_level": "LOW"
+    },
+    {
+      "req_id": "HLR06",
+      "req_type": "HLR",
+      "text": "Detection of flight control actuator faults. The flight control system shall detect and report flight control actuator faults within acceptable latency to prevent loss of control.",
+      "classification": "WEAKLY_COVERED",
+      "confidence_score": 0.6,
+      "reasoning": {
+        "summary": "HLR is partially covered by medium supporters, but lacks strong supporters.",
+        "key_findings": [
+          "LLR 2 and LLR 1 are medium supporters, but do not cover all aspects.",
+          "LLR 8 and LLR 9 do not constrain unsafe behavior."
+        ],
+        "gaps_identified": [
+          "LLR 8 and LLR 9 do not constrain unsafe behavior."
+        ]
+      },
+      "linked_llrs": [
+        {
+          "llr_id": "LLR04",
+          "llr_text": "Primary flight display fault annunciation",
+          "similarity_score": 0.648,
+          "weight": 0.548,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR10",
+          "llr_text": "Monitoring of actuator command-response consistency",
+          "similarity_score": 0.64,
+          "weight": 0.74,
+          "relationship": "supports",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": false
+          }
+        },
+        {
+          "llr_id": "LLR02",
+          "llr_text": "Control law reversion timing",
+          "similarity_score": 0.521,
+          "weight": 0.421,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR01",
+          "llr_text": "Validation of air data inputs",
+          "similarity_score": 0.517,
+          "weight": 0.417,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR09",
+          "llr_text": "Functional isolation following partial sensor failure",
+          "similarity_score": 0.504,
+          "weight": 0.404,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR08",
+          "llr_text": "Detection of non-critical sensor degradation",
+          "similarity_score": 0.424,
+          "weight": 0.324,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR03",
+          "llr_text": "Inhibition of air-data-dependent functions",
+          "similarity_score": 0.391,
+          "weight": 0.291,
+          "relationship": "constrains_unsafe_behavior",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": true,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR07",
+          "llr_text": "Adaptive sensor polling for power optimization",
+          "similarity_score": 0.378,
+          "weight": 0.178,
+          "relationship": "weak_extension",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": false,
+            "extends_beyond_intent": true
+          }
+        },
+        {
+          "llr_id": "LLR05",
+          "llr_text": "Air data sensor retry mechanism",
+          "similarity_score": 0.371,
+          "weight": 0.171,
+          "relationship": "weak_extension",
+          "reasoning_results": {
+            "is_required": false,
+            "prevents_violation": false,
+            "constrains_unsafe_behavior": false,
+            "extends_beyond_intent": true
+          }
+        }
+      ],
+      "metrics": {
+        "total_candidates": 9,
+        "strong_supporters": 0,
+        "medium_supporters": 2,
+        "weak_supporters": 3,
+        "required_llrs": 0
+      },
+      "risk_level": "MEDIUM"
+    }
+  ]
+}
