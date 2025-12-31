@@ -87,12 +87,12 @@ Metrics:
 - Weak supporters (weight 0.35-0.50): {sum(1 for r in reasoning_results if 0.35 < r['weight'] <= 0.50)}
 
 Classification criteria:
-- COMPLIANT: ≥3 strong supporters OR (≥2 strong + ≥2 medium). All expected aspects covered.
-- WEAKLY_COVERED: ≥1 strong OR ≥2 medium. Some coverage but incomplete or missing critical aspects.
-- NON_COMPLIANT: <2 supporters total. No meaningful implementation.
+- FULLY_TRACED: ≥3 strong supporters OR (≥2 strong + ≥2 medium). All expected aspects covered.
+- PARTIAL_TRACE: ≥1 strong OR ≥2 medium. Some coverage but incomplete or missing critical aspects.
+- TRACE_HOLE: <2 supporters total. No meaningful implementation.
 
 Based on the evidence, classify this HLR and provide:
-1. Classification (COMPLIANT, WEAKLY_COVERED, or NON_COMPLIANT)
+1. Classification (FULLY_TRACED, PARTIAL_TRACE, or TRACE_HOLE)
 2. Confidence score (0.0-0.95)
 3. Clear explanation of the decision
 4. Any gaps or missing aspects identified
@@ -110,7 +110,7 @@ def get_structured_output_schema() -> str:
     return """
 Return a JSON object with this exact structure:
 {
-  "classification": "COMPLIANT" | "WEAKLY_COVERED" | "NON_COMPLIANT",
+  "classification": "FULLY_TRACED" | "PARTIAL_TRACE" | "TRACE_HOLE",
   "confidence_score": 0.0 to 0.95,
   "reasoning": {
     "summary": "Brief explanation of classification",

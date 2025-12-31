@@ -80,11 +80,11 @@ class RequirementsGraph:
         hlr_colors = []
         for node in hlr_nodes:
             classification = self.G.nodes[node].get('classification', 'UNKNOWN')
-            if classification == 'COMPLIANT':
+            if classification == 'FULLY_TRACED':
                 hlr_colors.append('#2ecc71')  # Green
-            elif classification == 'WEAKLY_COVERED':
+            elif classification == 'PARTIAL_TRACE':
                 hlr_colors.append('#f39c12')  # Orange
-            elif classification == 'NON_COMPLIANT':
+            elif classification == 'TRACE_HOLE':
                 hlr_colors.append('#e74c3c')  # Red
             else:
                 hlr_colors.append('#95a5a6')  # Gray
@@ -152,9 +152,9 @@ class RequirementsGraph:
         # Create legend
         from matplotlib.patches import Patch, Rectangle, Circle
         legend_elements = [
-            Rectangle((0, 0), 1, 1, fc='#2ecc71', ec='black', label='HLR: Compliant'),
-            Rectangle((0, 0), 1, 1, fc='#f39c12', ec='black', label='HLR: Weakly Covered'),
-            Rectangle((0, 0), 1, 1, fc='#e74c3c', ec='black', label='HLR: Non-Compliant'),
+            Rectangle((0, 0), 1, 1, fc='#2ecc71', ec='black', label='HLR: Fully Traced'),
+            Rectangle((0, 0), 1, 1, fc='#f39c12', ec='black', label='HLR: Partial Trace'),
+            Rectangle((0, 0), 1, 1, fc='#e74c3c', ec='black', label='HLR: Trace Hole'),
             Circle((0, 0), 1, fc='#3498db', ec='black', label='LLR'),
             Patch(facecolor='#2ecc71', alpha=0.6, label='Strong Link (>0.75)'),
             Patch(facecolor='#f39c12', alpha=0.6, label='Medium Link (0.50-0.75)'),
@@ -180,9 +180,9 @@ class RequirementsGraph:
         llr_nodes = [n for n, d in self.G.nodes(data=True) if d.get('node_type') == 'LLR']
         
         # Count by classification
-        compliant = sum(1 for n in hlr_nodes if self.G.nodes[n].get('classification') == 'COMPLIANT')
-        weakly = sum(1 for n in hlr_nodes if self.G.nodes[n].get('classification') == 'WEAKLY_COVERED')
-        non_compliant = sum(1 for n in hlr_nodes if self.G.nodes[n].get('classification') == 'NON_COMPLIANT')
+        fully_traced = sum(1 for n in hlr_nodes if self.G.nodes[n].get('classification') == 'FULLY_TRACED')
+        partial_trace = sum(1 for n in hlr_nodes if self.G.nodes[n].get('classification') == 'PARTIAL_TRACE')
+        trace_hole = sum(1 for n in hlr_nodes if self.G.nodes[n].get('classification') == 'TRACE_HOLE')
         
         # Edge statistics
         edges = list(self.G.edges(data=True))
@@ -193,9 +193,9 @@ class RequirementsGraph:
         return {
             'total_hlrs': len(hlr_nodes),
             'total_llrs': len(llr_nodes),
-            'compliant_hlrs': compliant,
-            'weakly_covered_hlrs': weakly,
-            'non_compliant_hlrs': non_compliant,
+            'fully_traced_hlrs': fully_traced,
+            'partial_trace_hlrs': partial_trace,
+            'trace_hole_hlrs': trace_hole,
             'total_edges': len(edges),
             'strong_edges': strong_edges,
             'medium_edges': medium_edges,

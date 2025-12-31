@@ -1,0 +1,863 @@
+[
+  {
+    "req_id": "LLR01",
+    "req_type": "LLR",
+    "text": "Validation of air data inputs. The flight control computer shall perform range and consistency checks on airspeed and Mach number inputs at a rate of at least 50 Hz.",
+    "classification": "ORPHAN",
+    "confidence_score": 0.8,
+    "reasoning": {
+      "summary": "LLR has no meaningful HLR justification.",
+      "key_findings": [
+        "Extends beyond any HLR scope",
+        "No strong system-level requirement",
+        "Likely feature creep or unstated requirement"
+      ],
+      "primary_hlr": null,
+      "justification_strength": "NONE"
+    },
+    "linked_hlrs": [
+      {
+        "hlr_id": "HLR01",
+        "hlr_text": "Safe flight control law reversion on air data failure",
+        "similarity_score": 0.567,
+        "weight": 0.567,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR03",
+        "hlr_text": "Nominal flight path stability during normal operation",
+        "similarity_score": 0.488,
+        "weight": 0.488,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR05",
+        "hlr_text": "Continued safe operation under partial sensor failures",
+        "similarity_score": 0.472,
+        "weight": 0.472,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR02",
+        "hlr_text": "Pilot alerting for flight control system faults",
+        "similarity_score": 0.443,
+        "weight": 0.443,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR06",
+        "hlr_text": "Detection of flight control actuator faults",
+        "similarity_score": 0.517,
+        "weight": 0.317,
+        "relationship": "weak_extension",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": true,
+          "role": "Data Management"
+        }
+      }
+    ],
+    "metrics": {
+      "total_candidates": 5,
+      "hlrs_above_threshold": 5,
+      "strongest_hlr_weight": 0.5674541592597961
+    },
+    "risk_level": "HIGH"
+  },
+  {
+    "req_id": "LLR02",
+    "req_type": "LLR",
+    "text": "Control law reversion timing. Upon detection of invalid air data, the flight control computer shall transition from normal law to alternate law within 100 milliseconds.",
+    "classification": "AMBIGUOUS",
+    "confidence_score": 0.6,
+    "reasoning": {
+      "summary": "LLR maps to multiple HLRs without clear primary justification.",
+      "key_findings": [
+        "4 HLR relationships found",
+        "No single dominant justification",
+        "LLR scope may be too generic or broad"
+      ],
+      "primary_hlr": "HLR01",
+      "justification_strength": "WEAK"
+    },
+    "linked_hlrs": [
+      {
+        "hlr_id": "HLR01",
+        "hlr_text": "Safe flight control law reversion on air data failure",
+        "similarity_score": 0.754,
+        "weight": 0.754,
+        "relationship": "supports",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR06",
+        "hlr_text": "Detection of flight control actuator faults",
+        "similarity_score": 0.521,
+        "weight": 0.521,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR05",
+        "hlr_text": "Continued safe operation under partial sensor failures",
+        "similarity_score": 0.492,
+        "weight": 0.492,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR02",
+        "hlr_text": "Pilot alerting for flight control system faults",
+        "similarity_score": 0.488,
+        "weight": 0.488,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR03",
+        "hlr_text": "Nominal flight path stability during normal operation",
+        "similarity_score": 0.411,
+        "weight": 0.411,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      }
+    ],
+    "metrics": {
+      "total_candidates": 5,
+      "hlrs_above_threshold": 5,
+      "strongest_hlr_weight": 0.753791332244873
+    },
+    "risk_level": "MEDIUM"
+  },
+  {
+    "req_id": "LLR03",
+    "req_type": "LLR",
+    "text": "Inhibition of air-data-dependent functions. When operating in alternate control law due to air data failure, airspeed-dependent flight envelope protections shall be inhibited.",
+    "classification": "UNJUSTIFIED",
+    "confidence_score": 0.7,
+    "reasoning": {
+      "summary": "LLR adds behavior beyond what HLR02 demands.",
+      "key_findings": [
+        "Relates to HLR02 but extends scope",
+        "Introduces behavior not explicitly required",
+        "May be useful but needs explicit approval"
+      ],
+      "primary_hlr": "HLR02",
+      "justification_strength": "WEAK"
+    },
+    "linked_hlrs": [
+      {
+        "hlr_id": "HLR01",
+        "hlr_text": "Safe flight control law reversion on air data failure",
+        "similarity_score": 0.699,
+        "weight": 0.699,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR05",
+        "hlr_text": "Continued safe operation under partial sensor failures",
+        "similarity_score": 0.512,
+        "weight": 0.512,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR03",
+        "hlr_text": "Nominal flight path stability during normal operation",
+        "similarity_score": 0.472,
+        "weight": 0.472,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR06",
+        "hlr_text": "Detection of flight control actuator faults",
+        "similarity_score": 0.391,
+        "weight": 0.391,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR02",
+        "hlr_text": "Pilot alerting for flight control system faults",
+        "similarity_score": 0.401,
+        "weight": 0.201,
+        "relationship": "weak_extension",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": true,
+          "role": "Action/Response"
+        }
+      }
+    ],
+    "metrics": {
+      "total_candidates": 5,
+      "hlrs_above_threshold": 5,
+      "strongest_hlr_weight": 0.6994377374649048
+    },
+    "risk_level": "MEDIUM"
+  },
+  {
+    "req_id": "LLR04",
+    "req_type": "LLR",
+    "text": "Primary flight display fault annunciation. The system shall annunciate a flight control system fault on the primary flight display using standard caution or warning symbology.",
+    "classification": "AMBIGUOUS",
+    "confidence_score": 0.6,
+    "reasoning": {
+      "summary": "LLR maps to multiple HLRs without clear primary justification.",
+      "key_findings": [
+        "4 HLR relationships found",
+        "No single dominant justification",
+        "LLR scope may be too generic or broad"
+      ],
+      "primary_hlr": "HLR02",
+      "justification_strength": "WEAK"
+    },
+    "linked_hlrs": [
+      {
+        "hlr_id": "HLR02",
+        "hlr_text": "Pilot alerting for flight control system faults",
+        "similarity_score": 0.696,
+        "weight": 0.696,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR06",
+        "hlr_text": "Detection of flight control actuator faults",
+        "similarity_score": 0.648,
+        "weight": 0.648,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR05",
+        "hlr_text": "Continued safe operation under partial sensor failures",
+        "similarity_score": 0.496,
+        "weight": 0.496,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR01",
+        "hlr_text": "Safe flight control law reversion on air data failure",
+        "similarity_score": 0.452,
+        "weight": 0.452,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR03",
+        "hlr_text": "Nominal flight path stability during normal operation",
+        "similarity_score": 0.411,
+        "weight": 0.411,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      }
+    ],
+    "metrics": {
+      "total_candidates": 5,
+      "hlrs_above_threshold": 5,
+      "strongest_hlr_weight": 0.6955126523971558
+    },
+    "risk_level": "MEDIUM"
+  },
+  {
+    "req_id": "LLR05",
+    "req_type": "LLR",
+    "text": "Air data sensor retry mechanism. The system shall retry acquisition of air data sensor values up to three times before declaring the sensor invalid.",
+    "classification": "AMBIGUOUS",
+    "confidence_score": 0.55,
+    "reasoning": {
+      "summary": "LLR has weak relationship to HLRs, unclear necessity or scope.",
+      "key_findings": [
+        "Weak mapping to HLR01 (weight: 0.56)",
+        "Not clearly necessary for any specific HLR",
+        "Relationship is unclear or too generic"
+      ],
+      "primary_hlr": "HLR01",
+      "justification_strength": "WEAK"
+    },
+    "linked_hlrs": [
+      {
+        "hlr_id": "HLR01",
+        "hlr_text": "Safe flight control law reversion on air data failure",
+        "similarity_score": 0.563,
+        "weight": 0.563,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR05",
+        "hlr_text": "Continued safe operation under partial sensor failures",
+        "similarity_score": 0.506,
+        "weight": 0.506,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR04",
+        "hlr_text": "Maintenance data recording for fault investigation",
+        "similarity_score": 0.378,
+        "weight": 0.378,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR06",
+        "hlr_text": "Detection of flight control actuator faults",
+        "similarity_score": 0.371,
+        "weight": 0.371,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR02",
+        "hlr_text": "Pilot alerting for flight control system faults",
+        "similarity_score": 0.316,
+        "weight": 0.316,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      }
+    ],
+    "metrics": {
+      "total_candidates": 5,
+      "hlrs_above_threshold": 5,
+      "strongest_hlr_weight": 0.5625622272491455
+    },
+    "risk_level": "MEDIUM"
+  },
+  {
+    "req_id": "LLR06",
+    "req_type": "LLR",
+    "text": "High-rate recording of raw air data parameters. The system shall record raw air data parameters at a minimum rate of 200 Hz for engineering analysis.",
+    "classification": "ORPHAN",
+    "confidence_score": 0.8,
+    "reasoning": {
+      "summary": "LLR has no meaningful HLR justification.",
+      "key_findings": [
+        "Highest HLR weight: 0.43",
+        "All HLR relationships are very weak",
+        "No system-level requirement demands this behavior"
+      ],
+      "primary_hlr": null,
+      "justification_strength": "NONE"
+    },
+    "linked_hlrs": [
+      {
+        "hlr_id": "HLR04",
+        "hlr_text": "Maintenance data recording for fault investigation",
+        "similarity_score": 0.428,
+        "weight": 0.428,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR01",
+        "hlr_text": "Safe flight control law reversion on air data failure",
+        "similarity_score": 0.359,
+        "weight": 0.359,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      }
+    ],
+    "metrics": {
+      "total_candidates": 2,
+      "hlrs_above_threshold": 2,
+      "strongest_hlr_weight": 0.42849475145339966
+    },
+    "risk_level": "HIGH"
+  },
+  {
+    "req_id": "LLR07",
+    "req_type": "LLR",
+    "text": "Adaptive sensor polling for power optimization. The system shall dynamically adjust sensor polling rates during steady-state flight to reduce power consumption.",
+    "classification": "AMBIGUOUS",
+    "confidence_score": 0.55,
+    "reasoning": {
+      "summary": "LLR has weak relationship to HLRs, unclear necessity or scope.",
+      "key_findings": [
+        "Weak mapping to HLR05 (weight: 0.48)",
+        "Not clearly necessary for any specific HLR",
+        "Relationship is unclear or too generic"
+      ],
+      "primary_hlr": "HLR05",
+      "justification_strength": "WEAK"
+    },
+    "linked_hlrs": [
+      {
+        "hlr_id": "HLR05",
+        "hlr_text": "Continued safe operation under partial sensor failures",
+        "similarity_score": 0.476,
+        "weight": 0.476,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR02",
+        "hlr_text": "Pilot alerting for flight control system faults",
+        "similarity_score": 0.42,
+        "weight": 0.42,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR06",
+        "hlr_text": "Detection of flight control actuator faults",
+        "similarity_score": 0.378,
+        "weight": 0.378,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR01",
+        "hlr_text": "Safe flight control law reversion on air data failure",
+        "similarity_score": 0.375,
+        "weight": 0.375,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR03",
+        "hlr_text": "Nominal flight path stability during normal operation",
+        "similarity_score": 0.331,
+        "weight": 0.331,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      }
+    ],
+    "metrics": {
+      "total_candidates": 5,
+      "hlrs_above_threshold": 5,
+      "strongest_hlr_weight": 0.4763313829898834
+    },
+    "risk_level": "MEDIUM"
+  },
+  {
+    "req_id": "LLR08",
+    "req_type": "LLR",
+    "text": "Detection of non-critical sensor degradation. The system shall detect degraded performance of non-critical sensors and classify them as failed or degraded based on predefined thresholds.",
+    "classification": "AMBIGUOUS",
+    "confidence_score": 0.55,
+    "reasoning": {
+      "summary": "LLR has weak relationship to HLRs, unclear necessity or scope.",
+      "key_findings": [
+        "Weak mapping to HLR05 (weight: 0.50)",
+        "Not clearly necessary for any specific HLR",
+        "Relationship is unclear or too generic"
+      ],
+      "primary_hlr": "HLR05",
+      "justification_strength": "WEAK"
+    },
+    "linked_hlrs": [
+      {
+        "hlr_id": "HLR05",
+        "hlr_text": "Continued safe operation under partial sensor failures",
+        "similarity_score": 0.504,
+        "weight": 0.504,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR06",
+        "hlr_text": "Detection of flight control actuator faults",
+        "similarity_score": 0.424,
+        "weight": 0.424,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR04",
+        "hlr_text": "Maintenance data recording for fault investigation",
+        "similarity_score": 0.409,
+        "weight": 0.409,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR01",
+        "hlr_text": "Safe flight control law reversion on air data failure",
+        "similarity_score": 0.382,
+        "weight": 0.382,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR02",
+        "hlr_text": "Pilot alerting for flight control system faults",
+        "similarity_score": 0.36,
+        "weight": 0.36,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      }
+    ],
+    "metrics": {
+      "total_candidates": 5,
+      "hlrs_above_threshold": 5,
+      "strongest_hlr_weight": 0.5041406750679016
+    },
+    "risk_level": "MEDIUM"
+  },
+  {
+    "req_id": "LLR09",
+    "req_type": "LLR",
+    "text": "Functional isolation following partial sensor failure. Upon detection of a degraded non-critical sensor, only the functions dependent on that sensor shall be disabled while maintaining overall flight control.",
+    "classification": "UNJUSTIFIED",
+    "confidence_score": 0.7,
+    "reasoning": {
+      "summary": "LLR adds behavior beyond what HLR06 demands.",
+      "key_findings": [
+        "Relates to HLR06 but extends scope",
+        "Introduces behavior not explicitly required",
+        "May be useful but needs explicit approval"
+      ],
+      "primary_hlr": "HLR06",
+      "justification_strength": "WEAK"
+    },
+    "linked_hlrs": [
+      {
+        "hlr_id": "HLR05",
+        "hlr_text": "Continued safe operation under partial sensor failures",
+        "similarity_score": 0.787,
+        "weight": 0.787,
+        "relationship": "supports",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR01",
+        "hlr_text": "Safe flight control law reversion on air data failure",
+        "similarity_score": 0.5,
+        "weight": 0.5,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR02",
+        "hlr_text": "Pilot alerting for flight control system faults",
+        "similarity_score": 0.453,
+        "weight": 0.453,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR03",
+        "hlr_text": "Nominal flight path stability during normal operation",
+        "similarity_score": 0.394,
+        "weight": 0.394,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR06",
+        "hlr_text": "Detection of flight control actuator faults",
+        "similarity_score": 0.504,
+        "weight": 0.304,
+        "relationship": "weak_extension",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": true,
+          "role": "Error Handling"
+        }
+      }
+    ],
+    "metrics": {
+      "total_candidates": 5,
+      "hlrs_above_threshold": 5,
+      "strongest_hlr_weight": 0.7867169380187988
+    },
+    "risk_level": "MEDIUM"
+  },
+  {
+    "req_id": "LLR10",
+    "req_type": "LLR",
+    "text": "Monitoring of actuator command-response consistency. The system shall monitor the difference between commanded and measured actuator positions to detect actuator faults.",
+    "classification": "AMBIGUOUS",
+    "confidence_score": 0.55,
+    "reasoning": {
+      "summary": "LLR has weak relationship to HLRs, unclear necessity or scope.",
+      "key_findings": [
+        "Weak mapping to HLR06 (weight: 0.64)",
+        "Not clearly necessary for any specific HLR",
+        "Relationship is unclear or too generic"
+      ],
+      "primary_hlr": "HLR06",
+      "justification_strength": "WEAK"
+    },
+    "linked_hlrs": [
+      {
+        "hlr_id": "HLR06",
+        "hlr_text": "Detection of flight control actuator faults",
+        "similarity_score": 0.64,
+        "weight": 0.64,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR02",
+        "hlr_text": "Pilot alerting for flight control system faults",
+        "similarity_score": 0.51,
+        "weight": 0.51,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR04",
+        "hlr_text": "Maintenance data recording for fault investigation",
+        "similarity_score": 0.437,
+        "weight": 0.437,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR03",
+        "hlr_text": "Nominal flight path stability during normal operation",
+        "similarity_score": 0.41,
+        "weight": 0.41,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR05",
+        "hlr_text": "Continued safe operation under partial sensor failures",
+        "similarity_score": 0.35,
+        "weight": 0.35,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      }
+    ],
+    "metrics": {
+      "total_candidates": 5,
+      "hlrs_above_threshold": 5,
+      "strongest_hlr_weight": 0.6395645141601562
+    },
+    "risk_level": "MEDIUM"
+  }
+]

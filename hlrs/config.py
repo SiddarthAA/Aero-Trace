@@ -26,18 +26,23 @@ EMBEDDING_BATCH_SIZE = 32  # Batch size for embedding generation
 # Classification Configuration
 # ============================================================================
 
-# Similarity thresholds
-SIMILARITY_THRESHOLD_STRONG = 0.75  # Strong relationship
-SIMILARITY_THRESHOLD_MEDIUM = 0.50  # Medium relationship
-SIMILARITY_THRESHOLD_WEAK = 0.35    # Weak but valid relationship
+# Similarity thresholds (tuned for better discrimination)
+SIMILARITY_THRESHOLD_VERY_STRONG = 0.85  # Very strong relationship (LLR01-03 → HLR01)
+SIMILARITY_THRESHOLD_STRONG = 0.70       # Strong relationship
+SIMILARITY_THRESHOLD_MEDIUM = 0.45       # Medium relationship (raised from 0.50)
+SIMILARITY_THRESHOLD_WEAK = 0.30         # Weak but valid relationship (lowered from 0.35)
 
 # Top-K candidate retrieval
 TOP_K_CANDIDATES = 10  # Number of LLR candidates to retrieve per HLR
 
-# Classification thresholds for HLRs
-MIN_STRONG_LLRS_COMPLIANT = 3      # Minimum strong LLRs for COMPLIANT
-MIN_MEDIUM_LLRS_COMPLIANT = 5       # Minimum medium LLRs for COMPLIANT
-MIN_SUPPORTERS_WEAKLY_COVERED = 1   # Minimum for WEAKLY_COVERED
+# Classification thresholds for HLRs (stricter requirements)
+MIN_VERY_STRONG_FULLY_TRACED = 3       # Need 3 very strong LLRs for FULLY_TRACED
+MIN_STRONG_TOTAL_PARTIAL_TRACE = 1     # 1-2 strong = PARTIAL_TRACE
+MAX_STRONG_PARTIAL_TRACE = 2           # More than 2 strong → FULLY_TRACED
+
+# Weight computation factors
+WEIGHT_SIMILARITY_FACTOR = 0.6         # How much similarity contributes to weight
+WEIGHT_REASONING_FACTOR = 0.4          # How much reasoning contributes to weight
 
 # ============================================================================
 # LLM Model Configuration

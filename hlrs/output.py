@@ -24,9 +24,9 @@ def save_results(results: List[Dict], output_path: str = "dest/hlrs-summary.json
     output = {
         "metadata": {
             "total_hlrs": len(results),
-            "compliant": sum(1 for r in results if r['classification'] == 'COMPLIANT'),
-            "weakly_covered": sum(1 for r in results if r['classification'] == 'WEAKLY_COVERED'),
-            "non_compliant": sum(1 for r in results if r['classification'] == 'NON_COMPLIANT'),
+            "fully_traced": sum(1 for r in results if r['classification'] == 'FULLY_TRACED'),
+            "partial_trace": sum(1 for r in results if r['classification'] == 'PARTIAL_TRACE'),
+            "trace_hole": sum(1 for r in results if r['classification'] == 'TRACE_HOLE'),
         },
         "results": results
     }
@@ -66,10 +66,10 @@ def print_summary_table(results: List[Dict]):
         summary = result['reasoning']['summary'][:50] + "..." if len(result['reasoning']['summary']) > 50 else result['reasoning']['summary']
         
         # Color coding
-        if classification == 'COMPLIANT':
+        if classification == 'FULLY_TRACED':
             classification_text = f"[green]✅ {classification}[/green]"
             risk_text = f"[green]{risk}[/green]"
-        elif classification == 'WEAKLY_COVERED':
+        elif classification == 'PARTIAL_TRACE':
             classification_text = f"[yellow]⚠️  {classification}[/yellow]"
             risk_text = f"[yellow]{risk}[/yellow]"
         else:
@@ -101,9 +101,9 @@ def print_statistics(results: List[Dict]):
     from rich.columns import Columns
     
     total = len(results)
-    compliant = sum(1 for r in results if r['classification'] == 'COMPLIANT')
-    weakly = sum(1 for r in results if r['classification'] == 'WEAKLY_COVERED')
-    non_compliant = sum(1 for r in results if r['classification'] == 'NON_COMPLIANT')
+    fully_traced = sum(1 for r in results if r['classification'] == 'FULLY_TRACED')
+    partial_trace = sum(1 for r in results if r['classification'] == 'PARTIAL_TRACE')
+    trace_hole = sum(1 for r in results if r['classification'] == 'TRACE_HOLE')
     
     avg_confidence = sum(r['confidence_score'] for r in results) / total if total > 0 else 0
     
@@ -113,18 +113,18 @@ def print_statistics(results: List[Dict]):
     # Create panels
     panels = [
         Panel(
-            f"[bold green]{compliant}[/bold green] / {total}\n({compliant/total*100:.1f}%)",
-            title="✅ Compliant",
+            f"[bold green]{fully_traced}[/bold green] / {total}\n({fully_traced/total*100:.1f}%)",
+            title="✅ Fully Traced",
             border_style="green"
         ),
         Panel(
-            f"[bold yellow]{weakly}[/bold yellow] / {total}\n({weakly/total*100:.1f}%)",
-            title="⚠️  Weakly Covered",
+            f"[bold yellow]{partial_trace}[/bold yellow] / {total}\n({partial_trace/total*100:.1f}%)",
+            title="⚠️  Partial Trace",
             border_style="yellow"
         ),
         Panel(
-            f"[bold red]{non_compliant}[/bold red] / {total}\n({non_compliant/total*100:.1f}%)",
-            title="❌ Non-Compliant",
+            f"[bold red]{trace_hole}[/bold red] / {total}\n({trace_hole/total*100:.1f}%)",
+            title="❌ Trace Hole",
             border_style="red"
         ),
         Panel(

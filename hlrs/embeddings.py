@@ -23,8 +23,10 @@ class EmbeddingEngine:
         console.print(f"[cyan]Loading embedding model: {model_name}...[/cyan]")
         self.model = SentenceTransformer(model_name)
         self.dimension = self.model.get_sentence_embedding_dimension()
-        self.index = None
+        self.llr_index = None
+        self.hlr_index = None
         self.llr_ids = []
+        self.hlr_ids = []
         console.print(f"[green]✓ Model loaded (dimension: {self.dimension})[/green]")
     
     def encode(self, texts: List[str]) -> np.ndarray:
@@ -60,32 +62,57 @@ class EmbeddingEngine:
         faiss.normalize_L2(embeddings)
         
         # Build FAISS index (IndexFlatIP for inner product = cosine similarity with normalized vectors)
-        self.index = faiss.IndexFlatIP(self.dimension)
-        self.index.add(embeddings)
+        self.llr_index = faiss.IndexFlatIP(self.dimension)
+        self.llr_index.add(embeddings)
         
         console.print(f"[green]✓ FAISS index built with {len(llrs)} LLRs[/green]")
     
-    def search_top_k(self, query_text: str, k: int = 10, threshold: float = 0.0) -> List[Tuple[str, float]]:
+    def build_hlr_index(self, hlrs: List[Dict]):
+        """
+        Build FAISS index for HLRs
+        
+        Args:
+            hlrs: List of HLR dictionaries with 'id' and 'embedding_text'
+        """
+        console.print("[cyan]Building FAISS index for HLRs...[/cyan]")
+        
+        # Extract texts and IDs
+        self.hlr_ids = [hlr['id'] for hlr in hlrs]
+        hlr_texts = [hlr['embedding_text'] for hlr in hlrs]
+        
+        # Generate embeddings
+        embeddings = self.encode(hlr_texts)
+        
+        # Normalize embeddings for cosine similarity
+        faiss.normalize_L2(embeddings)
+        
+        # Build FAISS index
+        self.hlr_index = faiss.IndexFlatIP(self.dimension)
+        self.hlr_index.add(embeddings)
+        
+        console.print(f"[green]✓ FAISS index built with {len(hlrs)} HLRs[/green]")
+    
+    def search_llr(self, query_text: str, top_k: int = 10, threshold: float = 0.0) -> List[Tuple[str, float]]:
         """
         Search for top-K similar LLRs using FAISS
         
         Args:
             query_text: HLR text to search for
-            k: Number of top results to return
+            top_k: Number of top results to return
             threshold: Minimum similarity threshold
             
         Returns:
             List of (llr_id, similarity_score) tuples
         """
-        if self.index is None:
-            raise ValueError("Index not built. Call build_llr_index first.")
+        if self.llr_index is None:
+            raise ValueError("LLR index not built. Call build_llr_index first.")
         
         # Encode query
         query_embedding = self.encode([query_text])
         faiss.normalize_L2(query_embedding)
         
         # Search
-        similarities, indices = self.index.search(query_embedding, k)
+        similarities, indices = self.llr_index.search(query_embedding, top_k)
         
         # Format results
         results = []
@@ -94,6 +121,41 @@ class EmbeddingEngine:
                 results.append((self.llr_ids[idx], float(sim)))
         
         return results
+    
+    def search_hlr(self, query_text: str, top_k: int = 10, threshold: float = 0.0) -> List[Tuple[str, float]]:
+        """
+        Search for top-K similar HLRs using FAISS
+        
+        Args:
+            query_text: LLR text to search for
+            top_k: Number of top results to return
+            threshold: Minimum similarity threshold
+            
+        Returns:
+            List of (hlr_id, similarity_score) tuples
+        """
+        if self.hlr_index is None:
+            raise ValueError("HLR index not built. Call build_hlr_index first.")
+        
+        # Encode query
+        query_embedding = self.encode([query_text])
+        faiss.normalize_L2(query_embedding)
+        
+        # Search
+        similarities, indices = self.hlr_index.search(query_embedding, top_k)
+        
+        # Format results
+        results = []
+        for idx, sim in zip(indices[0], similarities[0]):
+            if sim >= threshold:
+                results.append((self.hlr_ids[idx], float(sim)))
+        
+        return results
+    
+    # Legacy method for backward compatibility
+    def search_top_k(self, query_text: str, k: int = 10, threshold: float = 0.0) -> List[Tuple[str, float]]:
+        """Legacy method - redirects to search_llr"""
+        return self.search_llr(query_text, k, threshold)
     
     def compute_similarity(self, text1: str, text2: str) -> float:
         """

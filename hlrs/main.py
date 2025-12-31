@@ -119,7 +119,7 @@ def main():
         results = classifier.classify_all_hlrs(
             hlrs,
             top_k=10,
-            threshold=0.35
+            threshold=0.30  # Lower threshold to catch more potential relationships
         )
         
         # Step 6: Save results
