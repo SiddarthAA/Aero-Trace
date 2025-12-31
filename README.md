@@ -340,11 +340,11 @@ This will:
 6. Save results to `dist/`
 
 ### Expected Output
-![hlr run](output/hlr-run.png)
-![llr run](output/llr-run.png)
-![hlr result](output/hlr-result.png)
-![llr result](output/llr-result.png)
-![summary](output/summary.png)
+![hlr run](outputs/hlr-run.png)
+![llr run](outputs/llr-run.png)
+![hlr result](outputs/hlr-result.png)
+![llr result](outputs/llr-result.png)
+![summary](outputs/summary.png)
 
 ### HLR-Only Analysis
 
