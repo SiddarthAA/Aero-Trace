@@ -40,7 +40,7 @@ def save_results(results: List[Dict], output_path: str = "dest/hlrs-summary.json
 
 def print_summary_table(results: List[Dict]):
     """
-    Print summary table to console
+    Print summary table to console with detailed gap analysis for PARTIAL_TRACE
     
     Args:
         results: List of HLR classification results
@@ -88,6 +88,106 @@ def print_summary_table(results: List[Dict]):
     console.print("\n")
     console.print(table)
     console.print("\n")
+    
+    # Print detailed gap analysis for PARTIAL_TRACE items
+    partial_trace_results = [r for r in results if r['classification'] == 'PARTIAL_TRACE']
+    
+    if partial_trace_results:
+        console.print("[bold yellow]═══ Detailed Gap Analysis for PARTIAL_TRACE Requirements ═══[/bold yellow]\n")
+        
+        for result in partial_trace_results:
+            hlr_id = result['req_id']
+            reasoning = result['reasoning']
+            
+            # Create detailed panel for each PARTIAL_TRACE HLR
+            panel_content = []
+            
+            # Summary
+            panel_content.append(f"[bold]Summary:[/bold] {reasoning.get('summary', 'N/A')}\n")
+            
+            # Covered aspects
+            covered = reasoning.get('covered_aspects', [])
+            if covered:
+                panel_content.append("[bold green]✓ Covered Aspects:[/bold green]")
+                for aspect in covered:
+                    panel_content.append(f"  • {aspect}")
+                panel_content.append("")
+            
+            # Missing aspects
+            missing = reasoning.get('missing_aspects', [])
+            if missing:
+                panel_content.append("[bold red]✗ Missing Aspects:[/bold red]")
+                for aspect in missing:
+                    panel_content.append(f"  • {aspect}")
+                panel_content.append("")
+            
+            # Gaps identified
+            gaps = reasoning.get('gaps_identified', [])
+            if gaps:
+                panel_content.append("[bold yellow]⚠ Gaps Identified:[/bold yellow]")
+                for gap in gaps:
+                    panel_content.append(f"  • {gap}")
+                panel_content.append("")
+            
+            # Recommendations
+            recommendations = reasoning.get('recommendations', [])
+            if recommendations:
+                panel_content.append("[bold cyan]💡 Recommendations:[/bold cyan]")
+                for rec in recommendations:
+                    panel_content.append(f"  • {rec}")
+            
+            # Key findings
+            findings = reasoning.get('key_findings', [])
+            if findings:
+                panel_content.append("\n[bold blue]📊 Key Findings:[/bold blue]")
+                for finding in findings:
+                    panel_content.append(f"  • {finding}")
+            
+            panel = Panel(
+                "\n".join(panel_content),
+                title=f"[yellow]{hlr_id} - PARTIAL_TRACE Analysis[/yellow]",
+                border_style="yellow",
+                expand=False
+            )
+            console.print(panel)
+            console.print("")
+    
+    # Also print TRACE_HOLE analysis if any
+    trace_hole_results = [r for r in results if r['classification'] == 'TRACE_HOLE']
+    
+    if trace_hole_results:
+        console.print("[bold red]═══ Critical Gaps: TRACE_HOLE Requirements ═══[/bold red]\n")
+        
+        for result in trace_hole_results:
+            hlr_id = result['req_id']
+            reasoning = result['reasoning']
+            
+            panel_content = []
+            panel_content.append(f"[bold]Summary:[/bold] {reasoning.get('summary', 'N/A')}\n")
+            
+            # Missing aspects
+            missing = reasoning.get('missing_aspects', [])
+            if missing:
+                panel_content.append("[bold red]✗ Missing Aspects:[/bold red]")
+                for aspect in missing:
+                    panel_content.append(f"  • {aspect}")
+                panel_content.append("")
+            
+            # Recommendations
+            recommendations = reasoning.get('recommendations', [])
+            if recommendations:
+                panel_content.append("[bold cyan]💡 Urgent Recommendations:[/bold cyan]")
+                for rec in recommendations:
+                    panel_content.append(f"  • {rec}")
+            
+            panel = Panel(
+                "\n".join(panel_content),
+                title=f"[red]{hlr_id} - TRACE_HOLE Analysis[/red]",
+                border_style="red",
+                expand=False
+            )
+            console.print(panel)
+            console.print("")
 
 
 def print_statistics(results: List[Dict]):

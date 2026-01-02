@@ -3,17 +3,17 @@
     "req_id": "LLR01",
     "req_type": "LLR",
     "text": "Validation of air data inputs. The flight control computer shall perform range and consistency checks on airspeed and Mach number inputs at a rate of at least 50 Hz.",
-    "classification": "ORPHAN",
-    "confidence_score": 0.8,
+    "classification": "AMBIGUOUS",
+    "confidence_score": 0.55,
     "reasoning": {
-      "summary": "LLR has no meaningful HLR justification.",
+      "summary": "LLR has weak relationship to HLRs, unclear necessity or scope.",
       "key_findings": [
-        "Extends beyond any HLR scope",
-        "No strong system-level requirement",
-        "Likely feature creep or unstated requirement"
+        "Weak mapping to HLR01 (weight: 0.57)",
+        "Not clearly necessary for any specific HLR",
+        "Relationship is unclear or too generic"
       ],
-      "primary_hlr": null,
-      "justification_strength": "NONE"
+      "primary_hlr": "HLR01",
+      "justification_strength": "WEAK"
     },
     "linked_hlrs": [
       {
@@ -21,6 +21,19 @@
         "hlr_text": "Safe flight control law reversion on air data failure",
         "similarity_score": 0.567,
         "weight": 0.567,
+        "relationship": "loosely_related",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR06",
+        "hlr_text": "Detection of flight control actuator faults",
+        "similarity_score": 0.517,
+        "weight": 0.517,
         "relationship": "loosely_related",
         "reasoning_results": {
           "supports_hlr": false,
@@ -67,19 +80,6 @@
           "extends_beyond": false,
           "role": "UNKNOWN"
         }
-      },
-      {
-        "hlr_id": "HLR06",
-        "hlr_text": "Detection of flight control actuator faults",
-        "similarity_score": 0.517,
-        "weight": 0.317,
-        "relationship": "weak_extension",
-        "reasoning_results": {
-          "supports_hlr": false,
-          "is_necessary": false,
-          "extends_beyond": true,
-          "role": "Data Management"
-        }
       }
     ],
     "metrics": {
@@ -87,22 +87,22 @@
       "hlrs_above_threshold": 5,
       "strongest_hlr_weight": 0.5674541592597961
     },
-    "risk_level": "HIGH"
+    "risk_level": "MEDIUM"
   },
   {
     "req_id": "LLR02",
     "req_type": "LLR",
     "text": "Control law reversion timing. Upon detection of invalid air data, the flight control computer shall transition from normal law to alternate law within 100 milliseconds.",
-    "classification": "AMBIGUOUS",
-    "confidence_score": 0.6,
+    "classification": "UNJUSTIFIED",
+    "confidence_score": 0.7,
     "reasoning": {
-      "summary": "LLR maps to multiple HLRs without clear primary justification.",
+      "summary": "LLR adds behavior beyond what HLR02 demands.",
       "key_findings": [
-        "4 HLR relationships found",
-        "No single dominant justification",
-        "LLR scope may be too generic or broad"
+        "Relates to HLR02 but extends scope",
+        "Introduces behavior not explicitly required",
+        "May be useful but needs explicit approval"
       ],
-      "primary_hlr": "HLR01",
+      "primary_hlr": "HLR02",
       "justification_strength": "WEAK"
     },
     "linked_hlrs": [
@@ -146,19 +146,6 @@
         }
       },
       {
-        "hlr_id": "HLR02",
-        "hlr_text": "Pilot alerting for flight control system faults",
-        "similarity_score": 0.488,
-        "weight": 0.488,
-        "relationship": "loosely_related",
-        "reasoning_results": {
-          "supports_hlr": false,
-          "is_necessary": false,
-          "extends_beyond": false,
-          "role": "UNKNOWN"
-        }
-      },
-      {
         "hlr_id": "HLR03",
         "hlr_text": "Nominal flight path stability during normal operation",
         "similarity_score": 0.411,
@@ -169,6 +156,19 @@
           "is_necessary": false,
           "extends_beyond": false,
           "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR02",
+        "hlr_text": "Pilot alerting for flight control system faults",
+        "similarity_score": 0.488,
+        "weight": 0.288,
+        "relationship": "weak_extension",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": true,
+          "role": "Timing/Performance"
         }
       }
     ],
@@ -504,32 +504,19 @@
     "req_id": "LLR07",
     "req_type": "LLR",
     "text": "Adaptive sensor polling for power optimization. The system shall dynamically adjust sensor polling rates during steady-state flight to reduce power consumption.",
-    "classification": "AMBIGUOUS",
-    "confidence_score": 0.55,
+    "classification": "ORPHAN",
+    "confidence_score": 0.8,
     "reasoning": {
-      "summary": "LLR has weak relationship to HLRs, unclear necessity or scope.",
+      "summary": "LLR has no meaningful HLR justification.",
       "key_findings": [
-        "Weak mapping to HLR05 (weight: 0.48)",
-        "Not clearly necessary for any specific HLR",
-        "Relationship is unclear or too generic"
+        "Extends beyond any HLR scope",
+        "No strong system-level requirement",
+        "Likely feature creep or unstated requirement"
       ],
-      "primary_hlr": "HLR05",
-      "justification_strength": "WEAK"
+      "primary_hlr": null,
+      "justification_strength": "NONE"
     },
     "linked_hlrs": [
-      {
-        "hlr_id": "HLR05",
-        "hlr_text": "Continued safe operation under partial sensor failures",
-        "similarity_score": 0.476,
-        "weight": 0.476,
-        "relationship": "loosely_related",
-        "reasoning_results": {
-          "supports_hlr": false,
-          "is_necessary": false,
-          "extends_beyond": false,
-          "role": "UNKNOWN"
-        }
-      },
       {
         "hlr_id": "HLR02",
         "hlr_text": "Pilot alerting for flight control system faults",
@@ -581,14 +568,27 @@
           "extends_beyond": false,
           "role": "UNKNOWN"
         }
+      },
+      {
+        "hlr_id": "HLR05",
+        "hlr_text": "Continued safe operation under partial sensor failures",
+        "similarity_score": 0.476,
+        "weight": 0.276,
+        "relationship": "weak_extension",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": true,
+          "role": "Optimization/Enhancement"
+        }
       }
     ],
     "metrics": {
       "total_candidates": 5,
       "hlrs_above_threshold": 5,
-      "strongest_hlr_weight": 0.4763313829898834
+      "strongest_hlr_weight": 0.41962331533432007
     },
-    "risk_level": "MEDIUM"
+    "risk_level": "HIGH"
   },
   {
     "req_id": "LLR08",
@@ -684,16 +684,16 @@
     "req_id": "LLR09",
     "req_type": "LLR",
     "text": "Functional isolation following partial sensor failure. Upon detection of a degraded non-critical sensor, only the functions dependent on that sensor shall be disabled while maintaining overall flight control.",
-    "classification": "UNJUSTIFIED",
-    "confidence_score": 0.7,
+    "classification": "AMBIGUOUS",
+    "confidence_score": 0.6,
     "reasoning": {
-      "summary": "LLR adds behavior beyond what HLR06 demands.",
+      "summary": "LLR maps to multiple HLRs without clear primary justification.",
       "key_findings": [
-        "Relates to HLR06 but extends scope",
-        "Introduces behavior not explicitly required",
-        "May be useful but needs explicit approval"
+        "4 HLR relationships found",
+        "No single dominant justification",
+        "LLR scope may be too generic or broad"
       ],
-      "primary_hlr": "HLR06",
+      "primary_hlr": "HLR05",
       "justification_strength": "WEAK"
     },
     "linked_hlrs": [
@@ -703,6 +703,19 @@
         "similarity_score": 0.787,
         "weight": 0.787,
         "relationship": "supports",
+        "reasoning_results": {
+          "supports_hlr": false,
+          "is_necessary": false,
+          "extends_beyond": false,
+          "role": "UNKNOWN"
+        }
+      },
+      {
+        "hlr_id": "HLR06",
+        "hlr_text": "Detection of flight control actuator faults",
+        "similarity_score": 0.504,
+        "weight": 0.504,
+        "relationship": "loosely_related",
         "reasoning_results": {
           "supports_hlr": false,
           "is_necessary": false,
@@ -747,19 +760,6 @@
           "is_necessary": false,
           "extends_beyond": false,
           "role": "UNKNOWN"
-        }
-      },
-      {
-        "hlr_id": "HLR06",
-        "hlr_text": "Detection of flight control actuator faults",
-        "similarity_score": 0.504,
-        "weight": 0.304,
-        "relationship": "weak_extension",
-        "reasoning_results": {
-          "supports_hlr": false,
-          "is_necessary": false,
-          "extends_beyond": true,
-          "role": "Error Handling"
         }
       }
     ],

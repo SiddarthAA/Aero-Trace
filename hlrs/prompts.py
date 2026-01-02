@@ -95,9 +95,18 @@ Based on the evidence, classify this HLR and provide:
 1. Classification (FULLY_TRACED, PARTIAL_TRACE, or TRACE_HOLE)
 2. Confidence score (0.0-0.95)
 3. Clear explanation of the decision
-4. Any gaps or missing aspects identified
+4. Key aspects that ARE covered by existing LLRs
+5. **For PARTIAL_TRACE only:** Specific gaps - what critical aspects, conditions, or behaviors are MISSING from the current LLR set
 
-Provide concise, factual reasoning."""
+For PARTIAL_TRACE classifications, be very specific about what's missing. Analyze the HLR carefully and identify:
+- Missing functional aspects (e.g., "No LLR defines the actual degraded control law behavior")
+- Missing conditions or triggers (e.g., "No LLR specifies the invalid air data detection criteria")
+- Missing safety constraints (e.g., "No LLR addresses fault handling during critical flight phases")
+- Missing error handling paths
+- Missing performance/timing requirements
+- Missing integration or interface requirements
+
+Provide concise, factual, and actionable reasoning."""
 
 
 def get_structured_output_schema() -> str:
@@ -114,8 +123,11 @@ Return a JSON object with this exact structure:
   "confidence_score": 0.0 to 0.95,
   "reasoning": {
     "summary": "Brief explanation of classification",
-    "key_findings": ["Finding 1", "Finding 2", "Finding 3"],
-    "gaps_identified": ["Gap 1", "Gap 2"] or []
+    "key_findings": ["Aspect 1 covered", "Aspect 2 covered", "Aspect 3 covered"],
+    "gaps_identified": ["Missing aspect 1 with details", "Missing aspect 2 with details"],
+    "covered_aspects": ["Specific aspect 1 that IS covered", "Specific aspect 2 that IS covered"],
+    "missing_aspects": ["Specific aspect 1 that is MISSING", "Specific aspect 2 that is MISSING"],
+    "recommendations": ["Suggestion 1 to fill gap", "Suggestion 2 to fill gap"]
   },
   "metrics": {
     "total_candidates": number,
@@ -125,6 +137,11 @@ Return a JSON object with this exact structure:
     "required_llrs": number
   }
 }
+
+IMPORTANT: For PARTIAL_TRACE classifications, you MUST populate:
+- "gaps_identified": Detailed list of what's missing or any modifications compared to the HLR
+- "missing_aspects": Specific HLR aspects not covered by any LLR or anything extra in the LLR which is not present in the HLR 
+- "recommendations": Actionable suggestions for new LLRs needed
 """
 
 
